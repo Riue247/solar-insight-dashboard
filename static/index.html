@@ -1,0 +1,149 @@
+<!-- static/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hackathon Solar Insight Dashboard</title>
+
+    <!-- Load Leaflet.js and Chart.js -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Simple Styling -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f8f9fa;
+        }
+
+        section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        p, ul, ol {
+            color: #555;
+        }
+
+        ul li, ol li {
+            margin-bottom: 8px;
+        }
+
+        /* Map grid layout */
+        .map-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        /* Map sizes */
+        #solar-map, #energy-map, #temp-map, #cloud-map {
+            width: 100%;
+            height: 300px;
+        }
+
+        /* Center insight box */
+        #solar-insight-box {
+            text-align: center;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Project Overview Section -->
+    <section id="overview">
+        <h1>🌞 Hackathon Solar Insight Dashboard</h1>
+        <p>This project delivers real-time solar energy condition predictions, live weather monitoring, and interactive insights using machine learning models trained on collected environmental data.</p>
+
+        <h2>Key Features 🚀</h2>
+        <ul>
+            <li>📡 Live weather data collection and visualization</li>
+            <li>🤖 Real-time machine learning predictions for solar energy conditions</li>
+            <li>🗺️ Interactive maps for solar radiation, energy production, temperature, and cloud cover</li>
+            <li>📈 Dynamic chart tracking solar conditions over time</li>
+        </ul>
+
+        <h2>How It Works 🛠️</h2>
+        <ol>
+            <li>🌦️ Collect live weather data every minute</li>
+            <li>💾 Save live data into a CSV database</li>
+            <li>🤖 Train a machine learning model (Random Forest Classifier)</li>
+            <li>⚡ Predict solar conditions from real-time inputs</li>
+            <li>📈 Update dashboard and charts live with insights</li>
+        </ol>
+
+        <h2>Technologies Used 🔧</h2>
+        <p>Python • FastAPI • Machine Learning • Chart.js • OpenWeatherMap API • Open-Meteo API • Leaflet.js</p>
+    </section>
+
+    <!-- Input and Prediction Section -->
+    <section>
+        <h2>ML Prediction Test 🔢</h2>
+        <input id="featureInput" type="number" placeholder="Enter a number (feature)">
+        <button onclick="sendPrediction()">Predict!</button>
+
+        <h3>Prediction Result:</h3>
+        <p id="prediction-result">Waiting...</p>
+    </section>
+
+    <!-- Live Weather Section -->
+    <section>
+        <h2>Live Weather Data 🌦️</h2>
+        <p id="weather-data">Loading weather...</p>
+    </section>
+
+    <!-- Live Maps Section -->
+    <section>
+        <h2>Live Weather Maps Dashboard 🗺️</h2>
+
+        <div class="map-grid">
+            <div>
+                <h3>Solar Radiation Map 🌞</h3>
+                <div id="solar-map"></div>
+            </div>
+
+            <div>
+                <h3>Solar Energy Production Map 🔋</h3>
+                <div id="energy-map"></div>
+            </div>
+
+            <div>
+                <h3>Temperature Map 🌡️</h3>
+                <div id="temp-map"></div>
+            </div>
+
+            <div>
+                <h3>Cloud Cover and Irradiance Map ☁️</h3>
+                <div id="cloud-map"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solar Insight Section -->
+    <section>
+        <h2>Solar Energy Insight Prediction 🌞⚡</h2>
+        <div id="solar-insight-box">
+            <p id="solar-insight">Loading insight...</p>
+
+            <h2>Solar Condition Over Time 📈</h2>
+            <canvas id="solarInsightChart" width="800" height="400"></canvas>
+        </div>
+    </section>
+
+    <!-- Load your app.js -->
+    <script src="app.js"></script>
+
+</body>
+</html>
